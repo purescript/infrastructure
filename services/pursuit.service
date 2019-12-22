@@ -1,0 +1,16 @@
+[Unit]
+Description=Web service for hosting of PureScript API documentation
+
+[Service]
+Type=exec
+User=ubuntu
+ExecStart=/var/www/pursuit/pursuit
+Environment="PURSUIT_APPROOT=http://68.183.119.81"
+Environment="PURSUIT_HOST=127.0.0.1"
+Environment="PURSUIT_PORT=3000"
+Environment="PURSUIT_DATA_DIR=/var/www/pursuit/data"
+Environment="PURSUIT_MINIMUM_COMPILER_VERSION=0.10.0"
+EnvironmentFile=/var/www/pursuit/secrets
+
+[Install]
+WantedBy=multi-user.target
