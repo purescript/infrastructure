@@ -26,8 +26,10 @@ pushd "$tmpdir"
 wget "$download_url"
 
 mkdir -p /var/www/pursuit
+mv pursuit.tar.gz /var/www/pursuit/pursuit.tar.gz
 
-tar xzf pursuit.tar.gz -C /var/www/pursuit
+chown -R www-data:www-data /var/www/pursuit
+sudo -u www-data tar xzf /var/www/pursuit/pursuit.tar.gz -C /var/www/pursuit
 
 systemctl restart pursuit.service
 
