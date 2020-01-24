@@ -26,6 +26,8 @@ pushd "$tmpdir"
 wget "$download_url"
 
 mkdir -p /var/www/pursuit
+mkdir -p /var/www/pursuit/data/verified
+
 mv pursuit.tar.gz /var/www/pursuit/pursuit.tar.gz
 
 chown -R www-data:www-data /var/www/pursuit
