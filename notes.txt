@@ -1,0 +1,15 @@
+Pursuit
+
+Still need to set up an automated process for:
+- database including backups
+- nginx config: copy to /etc/nginx/sites-enabled
+- systemd config: copy to /etc/systemd/system/pursuit.service
+- secrets:
+  - PURSUIT_GITHUB_AUTH_TOKEN
+  - github deploy key for database backups
+  - where to store them? GitHub Actions?
+- unattended-upgrades
+
+where should what go?
+  - is a single, idempotent, script for both first-time deploy and update
+    feasible?
