@@ -6,10 +6,9 @@ set -ex
 # set things up to enable deploying PureScript apps (e.g. Pursuit, Try
 # PureScript) to it.
 
-# Before running this script, you should unpack the contents of the whole repo
-# under the path
+# Before running this script, you should clone the repo at the path
 #
-#    /var/www/purescript-community-server
+#    /var/www/purescript-infrastructure
 #
 
 if [ $(id --user) -ne 0 ]
