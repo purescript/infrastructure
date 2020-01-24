@@ -2,9 +2,9 @@
 Description=Web service for hosting of PureScript API documentation
 
 [Service]
-Type=exec
+Type=simple
 User=www-data
-ExecStart=/var/www/pursuit/pursuit +RTS -N1 -A128m -M1G -RTS
+ExecStart=/var/www/pursuit/pursuit +RTS -N1 -A128m -M1.5G -RTS
 Environment="PURSUIT_APPROOT=http://pursuit.purescript.org"
 Environment="PURSUIT_HOST=127.0.0.1"
 Environment="PURSUIT_PORT=3000"
