@@ -6,9 +6,12 @@ set -ex
 # take care of data migrations; where they are needed, they must be done
 # manually.
 
-if [ $(id --user) -eq 0 ]
+# todo: have this script called by a wrapper which starts by ensuring we have
+# the latest config from the purescript/infrastructure repo?
+
+if [ $(id --user) -ne 0 ]
 then
-  echo >&2 "This script must not be run as root"
+  echo >&2 "This script must be run as root"
   exit 1
 fi
 
@@ -16,8 +19,6 @@ fi
 pursuit_version="v0.7.3"
 
 download_url="https://github.com/purescript/pursuit/releases/download/${pursuit_version}/pursuit.tar.gz"
-
-# todo: download up-to-date config?
 
 echo "[$(date)] $0: starting pursuit install"
 tmpdir="$(mktemp -d)"
@@ -27,3 +28,7 @@ wget "$download_url"
 mkdir -p /var/www/pursuit
 
 tar xzf pursuit.tar.gz -C /var/www/pursuit
+
+systemctl restart pursuit.service
+
+echo "[$(date)] $0: done pursuit install"
